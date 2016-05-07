@@ -11,10 +11,9 @@ class App extends React.Component {
   onListItemClick(video) {
     console.log(this);
     console.log(video);
-    debugger;
-    // this.setState({
-    //   currentVideo: video 
-    // });
+    this.setState({
+      currentVideo: video 
+    });
   }
 
   render() {
