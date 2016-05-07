@@ -17,13 +17,22 @@ var searchYouTube = (options, callback) => {
       q: options.query,
       maxResults: options.max,
       key: options.key,
-      part: 'snippet'
+      part: 'snippet',
+      type: 'video',
+      videoEmbeddable: 'true'
     }, 
     dataType: 'json'
-  }).done(function (data) {
-    callback(data.items);
+  })
+  .done(({items}) => {
+    if (callback) {
+      callback(items);
+    }
+  })
+  .fail(({responseJSON}) => {
+    responseJSON.error.errors.forEach((err) =>
+      console.error(err)
+    );
   });
-
 };
 
 //
