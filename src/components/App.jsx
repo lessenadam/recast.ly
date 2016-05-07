@@ -2,15 +2,15 @@ class App extends React.Component {
   constructor (props) {
     super(props);
 
+
+
     this.state = {
-      currentVideo: exampleVideoData[0],
-      videoList: exampleVideoData
+      currentVideo: this.props.searchYouTube[0],
+      videoList: this.props.searchYouTube
 
     };
   }
   onListItemClick(video) {
-    console.log(this);
-    console.log(video);
     this.setState({
       currentVideo: video 
     });
