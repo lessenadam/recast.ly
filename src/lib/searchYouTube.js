@@ -20,15 +20,17 @@ var searchYouTube = (options, callback) => {
       part: 'snippet',
       type: 'video',
       videoEmbeddable: 'true'
-    }, 
+    },
     dataType: 'json'
   })
   .done(({items}) => {
+    debugger;
     if (callback) {
       callback(items);
     }
   })
   .fail(({responseJSON}) => {
+    debugger;
     responseJSON.error.errors.forEach((err) =>
       console.error(err)
     );

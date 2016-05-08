@@ -4,14 +4,15 @@ class App extends React.Component {
 
     this.state = {
       currentVideo: exampleVideoData[0],
-      videoList: exampleVideoData
+      videoList: exampleVideoData,
+      query: 'cats'
 
     };
   }
 
   componentDidMount () {
     var options = {
-      query: 'cats',
+      query: this.state.query,
       key: window.YOUTUBE_API_KEY,
       max: 5
     };
@@ -30,10 +31,17 @@ class App extends React.Component {
     });
   }
 
+  onUserSearch(string) {
+    this.setState({
+      query: string
+    });
+    console.log(string);
+  }
+
   render() {
     return (
       <div>
-        <Nav />
+        <Nav onUserSearch={this.onUserSearch.bind(this)}/>
         <div className="col-md-7">
           <VideoPlayer video={this.state.currentVideo} />
         </div>
